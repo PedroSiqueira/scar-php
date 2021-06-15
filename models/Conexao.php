@@ -8,7 +8,7 @@ class Conexao
     private $nomeBanco;
     private $banco;
 
-    function __construct($servidor = "localhost", $user = "root", $pass = "", $nomeBanco = "scar")
+    function __construct($servidor = "localhost", $user = "laravel", $pass = "laravel", $nomeBanco = "laravel")
     {
         $this->setServidor($servidor);
         $this->setUser($user);
@@ -40,6 +40,8 @@ class Conexao
         $this->conectar();
         // Executa String SQL e armazena resposta na variável $rs
         $rs = $this->banco->query($sql);
+        // Verifica se houve erro
+        if (!$rs) die("Erro: ".$this->banco->error);
         // Desconecta do Banco de Dados
         $this->desconectar();
         // Retorna valor para o controlador
