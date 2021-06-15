@@ -1,0 +1,13 @@
+{
+    "autoload": {
+        "psr-4": {
+            "PhpMqtt\\Client\\Examples\\Shared\\": "mqtt"
+        }
+    },
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-json": "*",
+        "ext-pcntl": "*",
+        "php-mqtt/client": "^1.0"
+    }
+}

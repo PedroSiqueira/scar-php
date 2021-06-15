@@ -1,13 +1,16 @@
 <?php
 
 require "../../models/Usuario.php";
+require "../../mqtt/Publisher.php";
 
-$Usuario = new Usuario();
+$usuario = new Usuario();
 
 $identificador  = $_POST['campoIdentificador'];
 $nome = $_POST['campoNome'];
 $senha = $_POST['campoSenha'];
 
-$Usuario->add($identificador , $nome , $senha,);
+sendMQTT("usuario/adicionar", $identificador . "," . $senha);
+
+$usuario->add($identificador, $nome, $senha);
 
 header("Location: ../../views/Usuario/");
